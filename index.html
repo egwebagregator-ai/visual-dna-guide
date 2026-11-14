@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#151311">
+  <meta name="description" content="Семь промптов Елены Марчук для работы с визуальным стилем в ChatGPT.">
+  <title>ДНК визуального стиля · Елена Марчук</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="prompts.js" defer></script>
+  <script src="guide.js" defer></script>
+</head>
+<body>
+  <header class="masthead shell">
+    <span class="author">Елена Марчук</span>
+    <a class="profile" href="https://www.instagram.com/elena.marchuk.digital/">Instagram ↗</a>
+  </header>
+  <main>
+    <section class="hero shell" aria-labelledby="title">
+      <div>
+        <p class="eyebrow">Практический гайд</p>
+        <h1 id="title">ДНК визуального <em>стиля</em></h1>
+        <p class="intro">7 промптов для ChatGPT, чтобы оформить свой профиль или собрать креативы в стиле клиента.</p>
+        <div class="actions">
+          <a class="primary" href="#prompts">Открыть промпты <span aria-hidden="true">↓</span></a>
+          <a class="download" href="visual-dna-guide.pdf" download>Скачать PDF <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+      <div class="specimen" aria-hidden="true">
+        <div class="sheet">
+          <div class="type-sample">Аа</div>
+          <div class="swatches"><i></i><i></i><i></i><i></i></div>
+          <div class="composition"><i></i><i></i><i></i></div>
+        </div>
+      </div>
+    </section>
+    <section class="guide shell" id="prompts" aria-labelledby="guide-title">
+      <div class="section-head">
+        <h2 id="guide-title">Семь промптов</h2>
+        <p>Выбери задачу, скопируй промпт и подставь свои данные в квадратные скобки.</p>
+      </div>
+      <div id="prompt-list"></div>
+      <noscript><p><a href="visual-dna-guide.pdf">Открыть все семь промптов в PDF</a></p></noscript>
+    </section>
+  </main>
+  <footer class="shell">
+    <div>
+      <h2>Нужен стиль для твоего проекта?</h2>
+      <p>Разработаю визуальный паспорт и оформлю ленту, карусель или серию рекламных креативов.</p>
+    </div>
+    <a class="profile" href="https://www.instagram.com/elena.marchuk.digital/">Написать в Instagram ↗</a>
+  </footer>
+  <template id="prompt-template">
+    <details>
+      <summary><span class="number"></span><span class="prompt-title"></span><span class="toggle" aria-hidden="true"></span></summary>
+      <div class="prompt-body">
+        <p class="prompt-description"></p>
+        <button type="button">Скопировать промпт</button>
+        <span class="copy-status" role="status"></span>
+        <pre></pre>
+      </div>
+    </details>
+  </template>
+</body>
+</html>
