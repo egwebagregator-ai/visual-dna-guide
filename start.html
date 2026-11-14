@@ -38,6 +38,8 @@ button:hover { background: #ffe6b5; }
 #status:empty { display: none; }
 summary { cursor: pointer; padding: 14px clamp(16px, 4vw, 30px); border-top: 1px solid var(--border); color: var(--gold); }
 pre { white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; margin: 0; padding: 8px clamp(16px, 4vw, 30px) 26px; }
+footer { border-top: 1px solid var(--border); padding: 20px 0 36px; }
+footer a { color: var(--gold); text-underline-offset: .25em; }
 </style>
 </head>
 <body>
@@ -98,6 +100,9 @@ pre { white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; margin: 0; 
 </details>
 </section>
 </main>
+<footer class="shell">
+<a href="https://www.instagram.com/elena.marchuk.digital/">Мой Instagram <span aria-hidden="true">↗</span></a>
+</footer>
 <script>
 const promptText = document.querySelector('#text');
 const status = document.querySelector('#status');
