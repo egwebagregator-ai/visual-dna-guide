@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#151311">
+<title>СТАРТ · Промпт для ChatGPT</title>
+<style>
+:root { color-scheme: dark; color: #fff5e3; background: #151311; font: 16px/1.6 "Segoe UI", sans-serif; --gold: #f5ce83; --muted: #cfbfaa; --border: #564733; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+.shell { width: min(940px, calc(100% - 36px)); margin-inline: auto; }
+header { padding: 22px 0; border-bottom: 1px solid var(--border); }
+header span { font-weight: 650; }
+.hero { position: relative; isolation: isolate; display: grid; align-items: center; min-height: clamp(360px, 52vw, 570px); padding: 34px 0; }
+.hero > div { width: 53%; }
+.label { color: var(--gold); font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .16em; }
+h1 { font: 900 clamp(2.15rem, 5.9vw, 5rem)/.99 "Arial Narrow", "Segoe UI", sans-serif; letter-spacing: -.06em; text-transform: uppercase; margin: .24em 0 .35em; }
+h1 em { display: block; color: var(--gold); font-style: normal; }
+.lead { color: var(--muted); max-width: 38rem; font-size: 1.15rem; }
+.portrait { position: absolute; z-index: -1; right: 0; top: 0; bottom: 0; width: 55%; overflow: hidden; margin: 0; }
+.portrait img { display: block; position: absolute; right: 0; top: 50%; width: 110%; height: auto; transform: translateY(-50%); clip-path: inset(0 0 4% 11%); }
+.portrait::after { position: absolute; inset: 0; content: ""; background: linear-gradient(90deg, #151311 0%, transparent 16%, transparent 94%, #151311 100%), linear-gradient(0deg, #151311 0%, transparent 22%, transparent 91%, #151311 100%); }
+@media (max-width: 560px) {
+  .hero { min-height: 0; padding-block: 38px 25px; }
+  .hero > div { width: 61%; }
+  .hero h1 { font-size: clamp(1.63rem, 6.8vw, 2.3rem); }
+  .lead { font-size: 1rem; margin-bottom: 0; }
+  .portrait { top: 12px; width: 52%; }
+  .portrait::after { background: linear-gradient(90deg, #151311 1%, #151311a8 14%, transparent 34%, transparent 94%, #151311 100%), linear-gradient(0deg, #151311 0%, transparent 25%); }
+}
+.prompt { background: #211b15; border: 1px solid var(--border); border-top: 2px solid var(--gold); margin-bottom: 50px; }
+.prompt-head { padding: 22px clamp(16px, 4vw, 30px); }
+button { border: 0; border-radius: 0; padding: 13px 18px; font: inherit; font-weight: 700; background: var(--gold); color: #20170e; cursor: pointer; }
+button:hover { background: #ffe6b5; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+.hint, #status { font-size: .95rem; color: var(--muted); margin: .7rem 0 0; }
+#status:empty { display: none; }
+summary { cursor: pointer; padding: 14px clamp(16px, 4vw, 30px); border-top: 1px solid var(--border); color: var(--gold); }
+pre { white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; margin: 0; padding: 8px clamp(16px, 4vw, 30px) 26px; }
+</style>
+</head>
+<body>
+<header class="shell"><span>Елена Марчук</span></header>
+<main class="shell">
+<section class="hero">
+<div>
+<p class="label">СТАРТ · Промпт для ChatGPT</p>
+<h1>Помоги ChatGPT <em>понять тебя</em></h1>
+<p class="lead">Промпт запустит интервью. ChatGPT будет задавать по одному вопросу о твоих целях, задачах и том, как тебе удобно работать.</p>
+</div>
+<figure class="portrait">
+<img src="start-statue.png" alt="Мраморная статуя в золотистых очках смотрит на экран телефона">
+</figure>
+</section>
+<section class="prompt" aria-label="Промпт для интервью">
+<div class="prompt-head">
+<button type="button" id="copy">Скопировать промпт</button>
+<p class="hint">Вставь текст в новый чат и ответь на первый вопрос. К интервью можно вернуться позже.</p>
+<p id="status" role="status"></p>
+</div>
+<details id="full"><summary>Прочитать полный промпт</summary>
+<pre id="text">Проведи со мной интервью, чтобы лучше понять мой контекст и подстраивать ответы под мои задачи, цели и способ работы.
+
+Твоя задача — постепенно собрать психологический и поведенческий профиль, который поможет:
+— персонализировать дальнейшее общение;
+— лучше понимать мои задачи и точнее на них отвечать;
+— помогать мне принимать решения;
+— опираться на мои сильные стороны и учитывать то, что даётся мне сложнее;
+— подбирать рекомендации под мой характер и стиль мышления.
+
+Задавай по одному вопросу и жди моего ответа. Если ответ слишком общий, попроси привести конкретный пример. Любой вопрос я могу пропустить.
+
+После каждого ответа учитывай его при выборе следующего вопроса. Замечай повторяющиеся привычки, сильные стороны, противоречия, мотивацию и то, что меня ограничивает. Если видишь возможный паттерн, объясни, на каких моих словах основан вывод, и спроси, узнаю ли я себя в нём.
+
+Мне важно понять:
+— как я думаю и принимаю решения;
+— что меня драйвит и что вызывает стресс;
+— какие задачи даются легко и где я теряю энергию;
+— с какими людьми и в каких форматах мне комфортно работать;
+— как я отношусь к риску и в каких ситуациях мне помогает система;
+— насколько мне важны деньги, свобода, влияние, стабильность и признание;
+— чего я хочу достичь, что меня останавливает и где могу реализовать себя сильнее всего.
+
+Помогай мне лучше понять себя. Подсвечивай сильные стороны на конкретных примерах. Если замечаешь противоречие или установку, которая может мне мешать, назови её прямо и предложи сверить с моим опытом. Формулируй выводы о характере и мышлении как гипотезы, которые я могу подтвердить или поправить.
+
+Дополнительно помоги разобраться:
+— в моих особенностях мышления, общения и обучения;
+— в том, как я принимаю решения и какой стиль лидерства мне ближе;
+— как мне лучше использовать ИИ в жизни и работе;
+— какие задачи разумно делегировать ИИ и где он может особенно сильно меня усилить.
+
+Периодически подводи короткий итог: что уже понятно о моих сильных сторонах, трудностях, внутренних противоречиях, точках роста и возможностях, которые я могу недооценивать. Предлагай мне поправить выводы. По моей просьбе остановись и подведи итог по тому, что уже собрали.
+
+Когда информации будет достаточно, собери короткий профиль для дальнейшей работы: мои задачи, цели, подтверждённые предпочтения и то, как со мной эффективнее общаться. Покажи, какие пункты предлагаешь сохранить в память, и дождись моего согласия. Если сохранение доступно, запомни только согласованные пункты и сообщи, какие удалось сохранить. Если память отключена или недоступна, дай мне итоговый блок &#171;Мой контекст&#187;, который можно вставить в следующий чат.
+
+Начни с первого вопроса.</pre>
+</details>
+</section>
+</main>
+<script>
+const promptText = document.querySelector('#text');
+const status = document.querySelector('#status');
+document.querySelector('#copy').addEventListener('click', async () => {
+  try {
+    await navigator.clipboard.writeText(promptText.textContent);
+    status.textContent = 'Промпт скопирован.';
+  } catch {
+    document.querySelector('#full').open = true;
+    const range = document.createRange();
+    range.selectNodeContents(promptText);
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+    status.textContent = 'Текст выделен. Скопируй его через меню устройства.';
+  }
+});
+</script>
+</body>
+</html>
