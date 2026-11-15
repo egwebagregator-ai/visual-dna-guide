@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#151311">
+<title>НАСТРОЙ · Промпт для ChatGPT</title>
+<style>
+:root { color-scheme: dark; color: #fff5e3; background: #151311; font: 16px/1.6 "Segoe UI", sans-serif; --gold: #f5ce83; --muted: #cfbfaa; --border: #564733; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+.shell { width: min(940px, calc(100% - 36px)); margin-inline: auto; }
+header { padding: 22px 0; border-bottom: 1px solid var(--border); }
+header span { font-weight: 650; }
+.hero { position: relative; isolation: isolate; display: grid; align-items: center; min-height: clamp(360px, 52vw, 570px); padding: 34px 0; }
+.hero > div { width: 53%; }
+.label { color: var(--gold); font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .16em; }
+h1 { font: 900 clamp(2.15rem, 5.9vw, 5rem)/.99 "Arial Narrow", "Segoe UI", sans-serif; letter-spacing: -.06em; text-transform: uppercase; margin: .24em 0 .35em; }
+h1 em { display: block; color: var(--gold); font-style: normal; }
+.lead { color: var(--muted); max-width: 38rem; font-size: 1.15rem; }
+.portrait { position: absolute; z-index: -1; right: 0; top: 0; bottom: 0; width: 55%; overflow: hidden; margin: 0; }
+.portrait img { display: block; position: absolute; right: 0; top: 50%; width: 110%; height: auto; transform: translateY(-50%); clip-path: inset(0 0 4% 11%); }
+.portrait::after { position: absolute; inset: 0; content: ""; background: linear-gradient(90deg, #151311 0%, transparent 16%, transparent 94%, #151311 100%), linear-gradient(0deg, #151311 0%, transparent 22%, transparent 91%, #151311 100%); }
+@media (max-width: 560px) {
+  .hero { min-height: 0; padding-block: 38px 25px; }
+  .hero > div { width: 61%; }
+  .hero h1 { font-size: clamp(1.63rem, 6.8vw, 2.3rem); }
+  .lead { font-size: 1rem; margin-bottom: 0; }
+  .portrait { top: 12px; width: 52%; }
+  .portrait::after { background: linear-gradient(90deg, #151311 1%, #151311a8 14%, transparent 34%, transparent 94%, #151311 100%), linear-gradient(0deg, #151311 0%, transparent 25%); }
+}
+.prompt { background: #211b15; border: 1px solid var(--border); border-top: 2px solid var(--gold); margin-bottom: 50px; }
+.prompt-head { padding: 22px clamp(16px, 4vw, 30px); }
+button { border: 0; border-radius: 0; padding: 13px 18px; font: inherit; font-weight: 700; background: var(--gold); color: #20170e; cursor: pointer; }
+button:hover { background: #ffe6b5; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+.hint, #status { font-size: .95rem; color: var(--muted); margin: .7rem 0 0; }
+#status:empty { display: none; }
+summary { cursor: pointer; padding: 14px clamp(16px, 4vw, 30px); border-top: 1px solid var(--border); color: var(--gold); }
+pre { white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; margin: 0; padding: 8px clamp(16px, 4vw, 30px) 26px; }
+footer { border-top: 1px solid var(--border); padding: 20px 0 36px; }
+footer a { color: var(--gold); text-underline-offset: .25em; }
+.next { margin-bottom: 38px; color: var(--muted); }
+.next h2 { color: #fff5e3; margin-bottom: 10px; }
+.next ol { padding-left: 1.35em; }
+.next li + li { margin-top: .45em; }
+</style>
+</head>
+<body>
+<header class="shell"><span>Елена Марчук</span></header>
+<main class="shell">
+<section class="hero">
+<div>
+<p class="label">НАСТРОЙ · Промпт для ChatGPT</p>
+<h1>Настрой ChatGPT <em>под себя</em></h1>
+<p class="lead">Ответь на несколько вопросов с подсказками и получи готовый текст для пользовательских инструкций ChatGPT. Если у тебя уже есть инструкция, приложи её к первому ответу.</p>
+</div>
+<figure class="portrait">
+<img src="start-statue.png" alt="Мраморная статуя в золотистых очках смотрит на экран телефона">
+</figure>
+</section>
+<section class="prompt" aria-label="Промпт для интервью">
+<div class="prompt-head">
+<button type="button" id="copy">Скопировать промпт</button>
+<p class="hint">Вставь промпт в новый чат. Можно отвечать номером варианта или своими словами.</p>
+<p id="status" role="status"></p>
+</div>
+<details id="full"><summary>Прочитать полный промпт</summary>
+<pre id="text">Помоги мне составить пользовательскую инструкцию для ChatGPT. Проведи короткое интервью и собери правила, которые пригодятся в моих реальных задачах.
+
+КАК ПРОВОДИТЬ ИНТЕРВЬЮ
+
+Задавай по одному вопросу за раз и жди моего ответа. К каждому вопросу давай 3–4 пронумерованных варианта с короткими примерами. Напоминай, что можно ответить номером, выбрать несколько вариантов, если они совместимы, или написать свой ответ.
+
+Подбирай варианты на основе того, что я уже рассказал. Например, если я использую ChatGPT для работы с клиентами, предложи варианты вроде &#171;готовый ответ клиенту&#187;, &#171;разбор переписки&#187; или &#171;несколько формулировок на выбор&#187;. Если я учусь новому, предложи &#171;объяснение с примером&#187; или &#171;один шаг за раз с паузой для моего ответа&#187;.
+
+Если я пишу &#171;не знаю&#187; или сомневаюсь между вариантами, покажи на коротком примере, чем они отличаются. Порекомендуй подходящий вариант с учётом моих задач и спроси, подходит ли он мне. Добавляй рекомендацию в инструкцию только после моего подтверждения.
+
+Обычно достаточно 4–6 вопросов. Не переспрашивай то, что я уже сообщил. Если я пишу &#171;собери сейчас&#187;, составь инструкцию из того, что уже известно.
+
+ЧТО ВЫЯСНИТЬ
+
+1. Для каких задач я использую ChatGPT и какой результат хочу получать. Например, черновик для доработки, готовый текст, разбор идеи или пошаговый план.
+2. Какая подача мне удобна. Уточни язык, обращение и объём. Предложи конкретные варианты: &#171;короткий ответ с выводом&#187;, &#171;ответ с примером&#187; или &#171;подробный разбор, если тема сложная&#187;.
+3. Что мне мешает в ответах. Предложи примеры, чтобы помочь вспомнить: общие советы, лишние вступления, сложные слова, выдуманные факты или повторные вопросы. Если я приведу свой пример, выясни, как мне хотелось бы получить ответ в той ситуации.
+4. Как действовать, когда данных мало или есть несколько решений. Предложи выбрать: задать один вопрос, продолжить с явным предположением, сравнить варианты и порекомендовать один. Помоги уточнить, в каких ситуациях подходит каждый подход.
+5. Какие особые правила нужны для моих задач. Например, при правке текста сохранять мой голос, в отчётах отделять факты от гипотез, при редактировании фото менять только указанные детали, а при обучении давать по одному шагу и ждать моего ответа. Предлагай варианты, которые относятся к моим задачам.
+
+Если я пришлю свою инструкцию или чужой образец, используй их как материал для разбора. Покажи, какие формулировки полезны, где есть повторы и каких правил не хватает под мои задачи. Если важные правила противоречат друг другу, предложи варианты формулировки и помоги выбрать. Не включай в итог пароли, личные контакты и данные клиентов.
+
+ЧТО ВЫДАТЬ В КОНЦЕ
+
+1. &#171;Готовая инструкция&#187;. Дай один блок текста для копирования. Напиши его от моего лица. Включи краткий контекст обо мне, правила общения и требования для моих основных задач. Формулируй правила через конкретное поведение. Например: &#171;Начинай с ответа, а незнакомый термин поясни на одном примере&#187;. Не оставляй пустых полей и не приписывай мне предпочтения, которых я не подтвердил.
+2. &#171;Как проверить&#187;. Дай один запрос на основе моей реальной задачи, который я смогу отправить в новом чате после сохранения инструкции. Назови два признака, по которым я пойму, что ответ стал ближе к тому, что мне нужно.
+
+Уложи готовую инструкцию в 1500 символов, если я не указал другой лимит. В первую очередь сохрани правила, которые важнее всего для моих частых задач.
+
+Начни так:
+
+&#171;Для каких двух-трёх задач ты чаще всего используешь ChatGPT или хочешь начать использовать?
+
+1. Писать и редактировать тексты: посты, письма, ответы клиентам.
+2. Учиться: разбираться в сложных темах или осваивать инструменты.
+3. Работать с информацией: делать выжимки, анализировать данные, планировать.
+4. Придумывать и оценивать идеи: сравнивать варианты и принимать решения.
+
+Можно назвать номера, добавить свою задачу или описать её своими словами. Если у тебя уже есть инструкция или понравившийся образец, можешь прислать его вместе с ответом&#187;.</pre>
+</details>
+</section>
+<section class="next" aria-labelledby="next-title">
+<h2 id="next-title">Когда инструкция готова</h2>
+<ol>
+<li>На компьютере открой «Настройки» → «Персонализация» → «Пользовательские инструкции». На телефоне в настройках выбери «Настроить ChatGPT».</li>
+<li>Включи персонализацию, если она выключена, и вставь готовый текст в поле «Пользовательские инструкции».</li>
+<li>Открой новый чат и отправь проверочный запрос, который подготовил ChatGPT.</li>
+</ol>
+</section>
+</main>
+<footer class="shell">
+<p>Подписывайся, если хочешь больше примеров, как настроить ChatGPT под свои рабочие задачи.</p>
+<a href="https://www.instagram.com/elena.marchuk.digital/">Подписаться в Instagram <span aria-hidden="true">↗</span></a>
+</footer>
+<script>
+const promptText = document.querySelector('#text');
+const status = document.querySelector('#status');
+document.querySelector('#copy').addEventListener('click', async () => {
+  try {
+    await navigator.clipboard.writeText(promptText.textContent);
+    status.textContent = 'Промпт скопирован.';
+  } catch {
+    document.querySelector('#full').open = true;
+    const range = document.createRange();
+    range.selectNodeContents(promptText);
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+    status.textContent = 'Текст выделен. Скопируй его через меню устройства.';
+  }
+});
+</script>
+</body>
+</html>
