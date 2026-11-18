@@ -3,68 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#151311">
+<meta name="theme-color" content="#fffefa">
 <title>НАСТРОЙ · Промпт для ChatGPT</title>
-<style>
-:root { color-scheme: dark; color: #fff5e3; background: #151311; font: 16px/1.6 "Segoe UI", sans-serif; --gold: #f5ce83; --muted: #cfbfaa; --border: #564733; }
-* { box-sizing: border-box; }
-body { margin: 0; }
-.shell { width: min(940px, calc(100% - 36px)); margin-inline: auto; }
-header { padding: 22px 0; border-bottom: 1px solid var(--border); }
-header span { font-weight: 650; }
-.hero { position: relative; isolation: isolate; display: grid; align-items: center; min-height: clamp(360px, 52vw, 570px); padding: 34px 0; }
-.hero > div { width: 53%; }
-.label { color: var(--gold); font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .16em; }
-h1 { font: 900 clamp(2.15rem, 5.9vw, 5rem)/.99 "Arial Narrow", "Segoe UI", sans-serif; letter-spacing: -.06em; text-transform: uppercase; margin: .24em 0 .35em; }
-h1 em { display: block; color: var(--gold); font-style: normal; }
-.lead { color: var(--muted); max-width: 38rem; font-size: 1.15rem; }
-.portrait { position: absolute; z-index: -1; right: 0; top: 0; bottom: 0; width: 55%; overflow: hidden; margin: 0; }
-.portrait img { display: block; position: absolute; right: 0; top: 50%; width: 110%; height: auto; transform: translateY(-50%); clip-path: inset(0 0 4% 11%); }
-.portrait::after { position: absolute; inset: 0; content: ""; background: linear-gradient(90deg, #151311 0%, transparent 16%, transparent 94%, #151311 100%), linear-gradient(0deg, #151311 0%, transparent 22%, transparent 91%, #151311 100%); }
-@media (max-width: 560px) {
-  .hero { min-height: 0; padding-block: 38px 25px; }
-  .hero > div { width: 61%; }
-  .hero h1 { font-size: clamp(1.63rem, 6.8vw, 2.3rem); }
-  .lead { font-size: 1rem; margin-bottom: 0; }
-  .portrait { top: 12px; width: 52%; }
-  .portrait::after { background: linear-gradient(90deg, #151311 1%, #151311a8 14%, transparent 34%, transparent 94%, #151311 100%), linear-gradient(0deg, #151311 0%, transparent 25%); }
-}
-.prompt { background: #211b15; border: 1px solid var(--border); border-top: 2px solid var(--gold); margin-bottom: 50px; }
-.prompt-head { padding: 22px clamp(16px, 4vw, 30px); }
-button { border: 0; border-radius: 0; padding: 13px 18px; font: inherit; font-weight: 700; background: var(--gold); color: #20170e; cursor: pointer; }
-button:hover { background: #ffe6b5; }
-:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
-.hint, #status { font-size: .95rem; color: var(--muted); margin: .7rem 0 0; }
-#status:empty { display: none; }
-summary { cursor: pointer; padding: 14px clamp(16px, 4vw, 30px); border-top: 1px solid var(--border); color: var(--gold); }
-pre { white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; margin: 0; padding: 8px clamp(16px, 4vw, 30px) 26px; }
-footer { border-top: 1px solid var(--border); padding: 20px 0 36px; }
-footer a { color: var(--gold); text-underline-offset: .25em; }
-.next { margin-bottom: 38px; color: var(--muted); }
-.next h2 { color: #fff5e3; margin-bottom: 10px; }
-.next ol { padding-left: 1.35em; }
-.next li + li { margin-top: .45em; }
-</style>
+<link rel="stylesheet" href="nastroy.css">
 </head>
 <body>
 <header class="shell"><span>Елена Марчук</span></header>
 <main class="shell">
 <section class="hero">
-<div>
-<p class="label">НАСТРОЙ · Промпт для ChatGPT</p>
+<p class="label">Промпт для ChatGPT</p>
 <h1>Настрой ChatGPT <em>под себя</em></h1>
 <p class="lead">Ответь на несколько вопросов с подсказками и получи готовый текст для пользовательских инструкций ChatGPT. Если у тебя уже есть инструкция, приложи её к первому ответу.</p>
-</div>
-<figure class="portrait">
-<img src="start-statue.png" alt="Мраморная статуя в золотистых очках смотрит на экран телефона">
-</figure>
-</section>
-<section class="prompt" aria-label="Промпт для интервью">
 <div class="prompt-head">
 <button type="button" id="copy">Скопировать промпт</button>
 <p class="hint">Вставь промпт в новый чат. Можно отвечать номером варианта или своими словами.</p>
 <p id="status" role="status"></p>
 </div>
+</section>
+<section class="prompt" aria-label="Промпт для интервью">
 <details id="full"><summary>Прочитать полный промпт</summary>
 <pre id="text">Помоги мне составить пользовательскую инструкцию для ChatGPT. Проведи короткое интервью и собери правила, которые пригодятся в моих реальных задачах.
 
@@ -109,7 +65,7 @@ footer a { color: var(--gold); text-underline-offset: .25em; }
 </section>
 <section class="next" aria-labelledby="next-title">
 <h2 id="next-title">Когда инструкция готова</h2>
-<ol>
+<ol role="list">
 <li>На компьютере открой «Настройки» → «Персонализация» → «Пользовательские инструкции». На телефоне в настройках выбери «Настроить ChatGPT».</li>
 <li>Включи персонализацию, если она выключена, и вставь готовый текст в поле «Пользовательские инструкции».</li>
 <li>Открой новый чат и отправь проверочный запрос, который подготовил ChatGPT.</li>
